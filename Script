@@ -6,7 +6,7 @@ if game.PlaceId == 155615604 then
     local Main = Window:NewTab("Main")
     local MainSection = Main:NewSection("Main")
 
-    MainSection:NewDropdown("Give Gun", "Gives the localplayer a gun", {"M9", "Remington 870", "AK-47"}, function(v)
+    MainSection:NewDropdown("Give Gun", "Gives a gun to you", {"M9", "Remington 870", "AK-47"}, function(v)
         local A_1 = game:GetService("Workspace")["Prison_ITEMS"].giver[v].ITEMPICKUP
         local Event = game:GetService("Workspace").Remote.ItemHandler
         Event:InvokeServer(A_1)
@@ -89,7 +89,7 @@ elseif game.PlaceId == 3956818381 then
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = oldcframe
     end)
     
-    MainSection:NewToggle("Auto buy all swords", "Auto buys all swords", function(v)
+    MainSection:NewToggle("Auto buy all swords", "Auto buy all swords", function(v)
         getgenv().buyswords = v
         while true do
             if not getgenv().buyswords then return end
@@ -112,5 +112,37 @@ elseif game.PlaceId == 3956818381 then
             wait(0.5)
         end
     end)
-end
+ end
 
+elseif game.PlaceId == 286090429 then
+    local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+    local Window = Library.CreateLib("Space Hub", "Sentinel")
+
+    local Main = Window:NewTab("Main")
+    local MainSection = Main:NewSection("Main")
+
+    MainSection:NewDropdown("Wallbang", "Allows you to shoot through walls"), function(v)
+        game.Players.LocalPlayer:GetMouse().KeyDown:Connect(function(Key)
+            if Key == shared.Key then
+                shared.WB = not shared.WB
+            end
+        end)
+        
+        local mt = getrawmetatable(game)
+        local nc = mt.__namecall
+        
+        setreadonly(mt, false)
+        
+        mt.__namecall = newcclosure(function(self, ...)
+            local Method = getnamecallmethod()
+            local Arguments = {...}
+           
+            if Method == 'FindPartOnRayWithIgnoreList' and shared.WB then
+                table.insert(Arguments[2], game.GetService(game, 'Workspace').Map)
+               
+                return nc(self, unpack(Arguments))
+            end
+           
+            return nc(self,...)
+        end)
+    end)
