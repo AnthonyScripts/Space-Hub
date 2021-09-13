@@ -113,3 +113,187 @@ elseif game.PlaceId == 3956818381 then
         end
     end)
 end
+elseif game.PlaceId == 4042427666 then
+    local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+    local Window = Library.CreateLib("Space Hub", "Sentinel")
+
+    local GUI = Instance.new("ScreenGui")
+    local Main = Instance.new("Frame")
+    local Chakra = Instance.new("TextButton")
+    local Durability = Instance.new("TextButton")
+    local Strength = Instance.new("TextButton")
+    local Swords = Instance.new("TextButton")
+    local ChikaraTPToYou = Instance.new("TextButton")
+    local Toggle = Instance.new("Frame")
+    local Open = Instance.new("TextButton")
+    local Close = Instance.new("TextButton")
+    
+    --Properties:
+    
+    GUI.Name = "Space Hub"
+    GUI.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+    GUI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    
+    Main.Name = "Main"
+    Main.Parent = GUI
+    Main.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+    Main.Position = UDim2.new(0.405000001, 0, 0.270377755, 0)
+    Main.Size = UDim2.new(0, 230, 0, 230)
+    Main.Visible = false
+    
+    Chakra.Name = "Chakra"
+    Chakra.Parent = Main
+    Chakra.BackgroundColor3 = Color3.fromRGB(0, 85, 255)
+    Chakra.BorderSizePixel = 0
+    Chakra.Position = UDim2.new(0, 0, 0.798101246, 0)
+    Chakra.Size = UDim2.new(0, 230, 0, 46)
+    Chakra.Font = Enum.Font.Cartoon
+    Chakra.Text = "Chakra"
+    Chakra.TextColor3 = Color3.fromRGB(0, 0, 0)
+    Chakra.TextSize = 30.000
+    Chakra.MouseButton1Down:connect(function()
+    _G.LULU = true
+    while _G.LULU do
+    wait(0.1)
+    local A_1 = "Stat"
+    local A_2 = "Chakra"
+    game:GetService("ReplicatedStorage").Events.StatFunction:InvokeServer(A_1, A_2)
+    end
+    end)
+    
+    Durability.Name = "Durability"
+    Durability.Parent = Main
+    Durability.BackgroundColor3 = Color3.fromRGB(0, 85, 255)
+    Durability.BorderSizePixel = 0
+    Durability.Position = UDim2.new(0, 0, 0.598101258, 0)
+    Durability.Size = UDim2.new(0, 230, 0, 46)
+    Durability.Font = Enum.Font.Cartoon
+    Durability.Text = "Durability"
+    Durability.TextColor3 = Color3.fromRGB(0, 0, 0)
+    Durability.TextSize = 30.000
+    Durability.MouseButton1Down:connect(function()
+    _G.LULU = true
+    while _G.LULU do
+    wait(0.1)
+    local A_1 = "Stat"
+    local A_2 = "Durability"
+    game:GetService("ReplicatedStorage").Events.StatFunction:InvokeServer(A_1, A_2)
+    end
+    end)
+    
+    Strength.Name = "Strength"
+    Strength.Parent = Main
+    Strength.BackgroundColor3 = Color3.fromRGB(0, 85, 255)
+    Strength.BorderSizePixel = 0
+    Strength.Position = UDim2.new(0, 0, 0.39810124, 0)
+    Strength.Size = UDim2.new(0, 230, 0, 46)
+    Strength.Font = Enum.Font.Cartoon
+    Strength.Text = "Strength"
+    Strength.TextColor3 = Color3.fromRGB(0, 0, 0)
+    Strength.TextSize = 30.000
+    Strength.MouseButton1Down:connect(function()
+    _G.LULU = true
+    while _G.LULU do
+    wait(0.1)
+    local A_1 = "Stat"
+    local A_2 = "Strength"
+    game:GetService("ReplicatedStorage").Events.StatFunction:InvokeServer(A_1, A_2)
+    end
+    end)
+    
+    Swords.Name = "Swords"
+    Swords.Parent = Main
+    Swords.BackgroundColor3 = Color3.fromRGB(0, 85, 255)
+    Swords.BorderSizePixel = 0
+    Swords.Position = UDim2.new(0, 0, 0.198101252, 0)
+    Swords.Size = UDim2.new(0, 230, 0, 46)
+    Swords.Font = Enum.Font.Cartoon
+    Swords.Text = "Sword"
+    Swords.TextColor3 = Color3.fromRGB(0, 0, 0)
+    Swords.TextSize = 30.000
+    Swords.MouseButton1Down:connect(function()
+    _G.LULU = true
+    while _G.LULU do
+    wait(0.1)
+    local A_1 = "Stat"
+    local A_2 = "Sword"
+    game:GetService("ReplicatedStorage").Events.StatFunction:InvokeServer(A_1, A_2)
+    end
+    end)
+    
+    ChikaraTPToYou.Name = "ChikaraTPToYou"
+    ChikaraTPToYou.Parent = Main
+    ChikaraTPToYou.BackgroundColor3 = Color3.fromRGB(0, 85, 255)
+    ChikaraTPToYou.BorderSizePixel = 0
+    ChikaraTPToYou.Position = UDim2.new(0, 0, -0.00189876556, 0)
+    ChikaraTPToYou.Size = UDim2.new(0, 230, 0, 46)
+    ChikaraTPToYou.Font = Enum.Font.Cartoon
+    ChikaraTPToYou.Text = "Chikara Crate TP To You"
+    ChikaraTPToYou.TextColor3 = Color3.fromRGB(0, 0, 0)
+    ChikaraTPToYou.TextSize = 23.000
+    ChikaraTPToYou.TextWrapped = true
+    ChikaraTPToYou.MouseButton1Click:connect(function()
+    for i,v in pairs(game.Workspace.MouseIgnore:GetChildren())do
+    if v.Name == "ChikaraCrate" then
+    v:MoveTo(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position)        
+    end
+    end
+    wait(0.1) do
+    game.StarterGui:SetCore("SendNotification", {
+    Title = "Hello:)";
+    Text = "Thanks for using Space Hub!";
+    Duration = 2.0;
+    })
+    end
+    end)
+    
+    Toggle.Name = "Toggle"
+    Toggle.Parent = GUI
+    Toggle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    Toggle.BackgroundTransparency = 1.000
+    Toggle.Position = UDim2.new(0.405000001, 0, 0, 0)
+    Toggle.Size = UDim2.new(0, 230, 0, 45)
+    
+    Open.Name = "Open"
+    Open.Parent = Toggle
+    Open.BackgroundColor3 = Color3.fromRGB(0, 85, 255)
+    Open.BorderSizePixel = 0
+    Open.Position = UDim2.new(1.86264515e-08, 0, 0, 0)
+    Open.Size = UDim2.new(0, 115, 0, 45)
+    Open.Font = Enum.Font.Cartoon
+    Open.Text = "Open"
+    Open.TextColor3 = Color3.fromRGB(0, 0, 0)
+    Open.TextSize = 30.000
+    Open.MouseButton1Click:connect(function()
+        Close.Visible = true
+        Open.Visible = false
+        Main.Visible = true
+    end)
+    
+    Close.Name = "Close"
+    Close.Parent = Toggle
+    Close.BackgroundColor3 = Color3.fromRGB(0, 85, 255)
+    Close.BorderSizePixel = 0
+    Close.Position = UDim2.new(0.5, 0, -0.0241211075, 0)
+    Close.Size = UDim2.new(0, 115, 0, 46)
+    Close.Visible = false
+    Close.Font = Enum.Font.Cartoon
+    Close.Text = "Close"
+    Close.TextColor3 = Color3.fromRGB(0, 0, 0)
+    Close.TextSize = 30.000
+    Close.MouseButton1Click:connect(function()
+        Close.Visible = false
+        Open.Visible = true
+        Main.Visible = false
+    end)
+    
+    --Anti AFk
+    
+    local vu = game:GetService("VirtualUser")
+    game:GetService("Players").LocalPlayer.Idled:connect(function()
+       vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+       wait(1)
+       vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+    end)
+
+   
