@@ -114,35 +114,3 @@ elseif game.PlaceId == 3956818381 then
     end)
 end
 
-elseif game.PlaceId == 286090429 then
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-local Window = Library.CreateLib("Space Hub", "Sentinel")
-
-local Main = Window:NewTab("Main")
-local MainSection = Main:NewSection("Main")
-
-    MainSection:NewDropdown("Wallbang", "Allows you to shoot through walls"), function(v)
-        game.Players.LocalPlayer:GetMouse().KeyDown:Connect(function(Key)
-            if Key == shared.Key then
-                shared.WB = not shared.WB
-            end
-        end)
-        
-        local mt = getrawmetatable(game)
-        local nc = mt.__namecall
-        
-        setreadonly(mt, false)
-        
-        mt.__namecall = newcclosure(function(self, ...)
-            local Method = getnamecallmethod()
-            local Arguments = {...}
-           
-            if Method == 'FindPartOnRayWithIgnoreList' and shared.WB then
-                table.insert(Arguments[2], game.GetService(game, 'Workspace').Map)
-               
-                return nc(self, unpack(Arguments))
-            end
-           
-            return nc(self,...)
-        end)
-    end)
