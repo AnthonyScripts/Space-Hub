@@ -1,18 +1,18 @@
 if game.PlaceId == 155615604 then
     local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-    local Window = Library.CreateLib("Space Hub", "Ocean")
+    local Window = Library.CreateLib("Prison Life -  Space Hub", "Midnight")
 
     -- MAIN
     local Main = Window:NewTab("Main")
     local MainSection = Main:NewSection("Main")
 
-    MainSection:NewDropdown("Give Gun", "Gives a gun to you", {"M9", "Remington 870", "AK-47"}, function(v)
+    MainSection:NewDropdown("Give Gun", "Working", {"M9", "Remington 870", "AK-47"}, function(v)
         local A_1 = game:GetService("Workspace")["Prison_ITEMS"].giver[v].ITEMPICKUP
         local Event = game:GetService("Workspace").Remote.ItemHandler
         Event:InvokeServer(A_1)
     end)
 
-    MainSection:NewDropdown("Gun Mod", "Makes the gun op", {"M9", "Remington 870", "AK-47"}, function(v)
+    MainSection:NewDropdown("Gun Mod", "Working", {"M9", "Remington 870", "AK-47"}, function(v)
         local module = nil
         if game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(v) then
             module = require(game:GetService("Players").LocalPlayer.Backpack[v].GunStates)
@@ -36,22 +36,22 @@ if game.PlaceId == 155615604 then
     local Player = Window:NewTab("Player")
     local PlayerSection = Player:NewSection("Player")
 
-    PlayerSection:NewSlider("Walkspeed", "Changes the walkspeed", 250, 16, function(v)
+    PlayerSection:NewSlider("Walkspeed", "Working", 250, 16, function(v)
         game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = v
     end)
 
-    PlayerSection:NewSlider("Jumppower", "Changes the jumppower", 250, 50, function(v)
+    PlayerSection:NewSlider("Jumppower", "Working", 250, 50, function(v)
         game.Players.LocalPlayer.Character.Humanoid.JumpPower = v
     end)
 elseif game.PlaceId == 3956818381 then
     local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-    local Window = Library.CreateLib("Space Hub", "Ocean")
+    local Window = Library.CreateLib("Ninja Legends -  Space Hub", "Midnight")
 
     -- MAIN
     local Main = Window:NewTab("Main")
     local MainSection = Main:NewSection("Main")
 
-    MainSection:NewToggle("Auto Swing", "Make your player autoswing", function(v)
+    MainSection:NewToggle("Auto Swing", "Working", function(v)
         getgenv().autoswing = v
         while true do
             if not getgenv().autoswing then return end
@@ -68,7 +68,7 @@ elseif game.PlaceId == 3956818381 then
         end
     end)
 
-    MainSection:NewToggle("Auto Sell", "Makes your player autosell", function(v)
+    MainSection:NewToggle("Auto Sell", "Working", function(v)
         getgenv().autosell = v
         while true do
             if getgenv().autoswing == false then return end
@@ -79,7 +79,7 @@ elseif game.PlaceId == 3956818381 then
         end
     end)
 
-    MainSection:NewButton("Unlock all islands", "Unlocks all islands", function()
+    MainSection:NewButton("Unlock all islands", "Working", function()
         local oldcframe = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
         for _,v in pairs(game:GetService("Workspace").islandUnlockParts:GetChildren()) do
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
@@ -89,7 +89,7 @@ elseif game.PlaceId == 3956818381 then
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = oldcframe
     end)
     
-    MainSection:NewToggle("Auto buy all swords", "Auto buy all swords", function(v)
+    MainSection:NewToggle("Auto buy all swords", "Working", function(v)
         getgenv().buyswords = v
         while true do
             if not getgenv().buyswords then return end
@@ -101,7 +101,7 @@ elseif game.PlaceId == 3956818381 then
         end
     end)
 
-    MainSection:NewToggle("Auto buy all belts", "Auto buys all belts", function(v)
+    MainSection:NewToggle("Auto buy all belts", "Working", function(v)
         getgenv().buybelts = v
         while true do
             if not getgenv().buybelts then return end
@@ -112,37 +112,871 @@ elseif game.PlaceId == 3956818381 then
             wait(0.5)
         end
     end)
- end
-
 elseif game.PlaceId == 286090429 then
     local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-    local Window = Library.CreateLib("Space Hub", "Ocean")
+    local Window = Library.CreateLib("Arsenal -  Space Hub", "Midnight")
 
+    -- MAIN
+    local Main = Window:NewTab("Main")
+    local MainSection = Main:NewSection("Main")
+    local Misc = Window:NewTab("Misc")
+    local MiscSection = Misc:NewSection("Misc")
+
+    MiscSection:NewToggle("Inf jump", "Patched", function(v)
+         if key.KeyCode == Enum.KeyCode.Space then
+            if JumpEnabled == true then
+                game.Players.LocalPlayer.Character.Humanoid.JumpPower = 50
+                game.Players.LocalPlayer.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+                game.Players.LocalPlayer.Character.Humanoid.JumpPower = 50
+                game.Players.LocalPlayer.Character.Humanoid.Jump = true
+            end
+        end
+    end)
+MiscSection:NewToggle("Kill All (press e to Kill All)", "Working", function(v)   
+loadstring(game:HttpGet(('https://pastebin.com/raw/uN3Qgqpt'),true))()
+end)
+MiscSection:NewToggle("Auto Farm (risk of ban)", "Testing", function(v)   
+    loadstring(game:HttpGet("https://pastebin.com/raw/0azVghz0", true))()
+end)
+MiscSection:NewToggle("Gun Mod", "Testing", function(v)   
+    local Functions = {}
+	for i,v in pairs(getreg()) do
+		if type(v) == "function" then
+			for i2,v2 in pairs(getfenv(v)) do
+				if type(v2) == "function" then
+					Functions[tostring(i2)] = v2
+				end
+			end
+		end
+	end
+
+	function GetLocalWeapon()
+		return getfenv(Functions.usethatgun).gun
+	end
+
+	game:GetService("RunService"):BindToRenderStep("gunmodsarecool", 1, function()
+		getfenv(Functions.usethatgun).currentspread = 0 -- NoSpread
+
+		getfenv(Functions.usethatgun).recoil = 0 -- NoRecoil
+
+		if GetLocalWeapon() ~= "none" and GetLocalWeapon():FindFirstChild("Ammo") then -- Inf Ammo
+			debug.setupvalue(Functions["updateInventory"], 3, GetLocalWeapon():FindFirstChild("Ammo").Value)
+		end
+
+		if game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("Spawned") and game:GetService("UserInputService"):IsMouseButtonPressed(Enum.UserInputType.MouseButton1) then -- RapidFire
+			if game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Health ~= 0 and game.Players.LocalPlayer.Character:FindFirstChild("Spawned") then
+				pcall(function()
+					Functions.firebullet(true)
+				end)
+			end
+		end
+	end)
+end)
+   
+   
+    MiscSection:NewToggle("Wallbang", "Working", function(v)
+        _G.Enable = true
+        local MT = getrawmetatable(game)
+        local OldIndex = MT.__index
+        setreadonly(MT, false)
+        MT.__index = newcclosure(function(A, B)
+            if B == "Clips" then
+                if _G.Enable then
+                    return workspace.Map
+                end
+            end
+            return OldIndex(A, B)
+        end)
+        game:GetService("UserInputService").InputBegan:Connect(function(Key, _)
+            if not _ and Key.KeyCode == Enum.KeyCode.T then
+                _G.Enable = not _G.Enable
+            end
+        end)
+    end)
+    MiscSection:NewToggle("Noclip", "Patched", function(v)
+       
+    end)
+    MainSection:NewToggle("Hit Box", "Working", function(v)
+        function getnames()
+            for i, v in pairs(game:GetChildren()) do
+                if v.ClassName == "Players" then
+                    return v.Name
+                end
+            end
+        end
+        local players = getnames()
+        local LP = game:GetService("Players").LocalPlayer
+        coroutine.resume(
+            coroutine.create(
+                function()
+                    while wait(1) do
+                        coroutine.resume(
+                            coroutine.create(
+                                function()
+                                    for _, v in pairs(game:GetService("Players"):GetPlayers()) do
+                                        if v.Name ~= LP.Name and v.Character.UpperTorso.Color ~= LP.Character.UpperTorso.Color then
+                                            v.Character.LowerTorso.CanCollide = false
+                                            v.Character.LowerTorso.Material = "Neon"
+                                            v.Character.LowerTorso.Transparency = 1
+                                            v.Character.LowerTorso.Size = Vector3.new(15, 15, 15)
+                                            v.Character.HumanoidRootPart.Size = Vector3.new(15, 15, 15)
+                                        end
+                                    end
+                                end
+                            )
+                        )
+                    end
+                end
+            )
+        )
+    end)
+
+    MainSection:NewToggle("Tracers", "Working", function(v)
+        local lplr = game.Players.LocalPlayer
+local camera = game:GetService("Workspace").CurrentCamera
+local CurrentCamera = workspace.CurrentCamera
+local worldToViewportPoint = CurrentCamera.worldToViewportPoint
+
+_G.TeamCheck = true -- Use True or False to toggle TeamCheck
+
+for i,v in pairs(game.Players:GetChildren()) do
+    local Tracer = Drawing.new("Line")
+    Tracer.Visible = false
+    Tracer.Color = Color3.new(1,1,1)
+    Tracer.Thickness = 1
+    Tracer.Transparency = 1
+
+    function lineesp()
+        game:GetService("RunService").RenderStepped:Connect(function()
+            if v.Character ~= nil and v.Character:FindFirstChild("Humanoid") ~= nil and v.Character:FindFirstChild("HumanoidRootPart") ~= nil and v ~= lplr and v.Character.Humanoid.Health > 0 then
+                local Vector, OnScreen = camera:worldToViewportPoint(v.Character.HumanoidRootPart.Position)
+
+                if OnScreen then
+                    Tracer.From = Vector2.new(camera.ViewportSize.X / 2, camera.ViewportSize.Y / 1)
+                    Tracer.To = Vector2.new(Vector.X, Vector.Y)
+
+                    if _G.TeamCheck and v.TeamColor == lplr.TeamColor then
+                        --//Teammates
+                        Tracer.Visible = false
+                    else
+                        --//Enemies
+                        Tracer.Visible = true
+                    end
+                else
+                    Tracer.Visible = false
+                end
+            else
+                Tracer.Visible = false
+            end
+        end)
+    end
+    coroutine.wrap(lineesp)()
+end
+
+game.Players.PlayerAdded:Connect(function(v)
+    local Tracer = Drawing.new("Line")
+    Tracer.Visible = false
+    Tracer.Color = Color3.new(1,1,1)
+    Tracer.Thickness = 1
+    Tracer.Transparency = 1
+
+    function lineesp()
+        game:GetService("RunService").RenderStepped:Connect(function()
+            if v.Character ~= nil and v.Character:FindFirstChild("Humanoid") ~= nil and v.Character:FindFirstChild("HumanoidRootPart") ~= nil and v ~= lplr and v.Character.Humanoid.Health > 0 then
+                local Vector, OnScreen = camera:worldToViewportPoint(v.Character.HumanoidRootPart.Position)
+
+                if OnScreen then
+                    Tracer.From = Vector2.new(camera.ViewportSize.X / 2, camera.ViewportSize.Y / 1)
+                    Tracer.To = Vector2.new(Vector.X, Vector.Y)
+
+                    if _G.TeamCheck and v.TeamColor == lplr.TeamColor then
+                        --//Teammates
+                        Tracer.Visible = false
+                    else
+                        --//Enemies
+                        Tracer.Visible = true
+                    end
+                else
+                    Tracer.Visible = false
+                end
+            else
+                Tracer.Visible = false
+            end
+        end)
+    end
+    coroutine.wrap(lineesp)()
+end)
+    end)
+
+
+    
+    MainSection:NewToggle("Box", "Working", function(v)
+    
+
+local lplr = game.Players.LocalPlayer
+local camera = game:GetService("Workspace").CurrentCamera
+local CurrentCamera = workspace.CurrentCamera
+local worldToViewportPoint = CurrentCamera.worldToViewportPoint
+
+local HeadOff = Vector3.new(0, 0.5, 0)
+local LegOff = Vector3.new(0,3,0)
+
+for i,v in pairs(game.Players:GetChildren()) do
+    local BoxOutline = Drawing.new("Square")
+    BoxOutline.Visible = false
+    BoxOutline.Color = Color3.new(0,0,0)
+    BoxOutline.Thickness = 3
+    BoxOutline.Transparency = 1
+    BoxOutline.Filled = false
+
+    local Box = Drawing.new("Square")
+    Box.Visible = false
+    Box.Color = Color3.new(1,1,1)
+    Box.Thickness = 1
+    Box.Transparency = 1
+    Box.Filled = false
+
+    function boxesp()
+        game:GetService("RunService").RenderStepped:Connect(function()
+            if v.Character ~= nil and v.Character:FindFirstChild("Humanoid") ~= nil and v.Character:FindFirstChild("HumanoidRootPart") ~= nil and v ~= lplr and v.Character.Humanoid.Health > 0 then
+                local Vector, onScreen = camera:worldToViewportPoint(v.Character.HumanoidRootPart.Position)
+
+                local RootPart = v.Character.HumanoidRootPart
+                local Head = v.Character.Head
+                local RootPosition, RootVis = worldToViewportPoint(CurrentCamera, RootPart.Position)
+                local HeadPosition = worldToViewportPoint(CurrentCamera, Head.Position + HeadOff)
+                local LegPosition = worldToViewportPoint(CurrentCamera, RootPart.Position - LegOff)
+
+                if onScreen then
+                    BoxOutline.Size = Vector2.new(1000 / RootPosition.Z, HeadPosition.Y - LegPosition.Y)
+                    BoxOutline.Position = Vector2.new(RootPosition.X - BoxOutline.Size.X / 2, RootPosition.Y - BoxOutline.Size.Y / 2)
+                    BoxOutline.Visible = true
+
+                    Box.Size = Vector2.new(1000 / RootPosition.Z, HeadPosition.Y - LegPosition.Y)
+                    Box.Position = Vector2.new(RootPosition.X - Box.Size.X / 2, RootPosition.Y - Box.Size.Y / 2)
+                    Box.Visible = true
+
+                    if v.TeamColor == lplr.TeamColor then
+                        BoxOutline.Visible = false
+                        Box.Visible = false
+                    else
+                        BoxOutline.Visible = true
+                        Box.Visible = true
+                    end
+
+                else
+                    BoxOutline.Visible = false
+                    Box.Visible = false
+                end
+            else
+                BoxOutline.Visible = false
+                Box.Visible = false
+            end
+        end)
+    end
+    coroutine.wrap(boxesp)()
+end
+
+game.Players.PlayerAdded:Connect(function(v)
+    local BoxOutline = Drawing.new("Square")
+    BoxOutline.Visible = false
+    BoxOutline.Color = Color3.new(0,0,0)
+    BoxOutline.Thickness = 3
+    BoxOutline.Transparency = 1
+    BoxOutline.Filled = false
+
+    local Box = Drawing.new("Square")
+    Box.Visible = false
+    Box.Color = Color3.new(1,1,1)
+    Box.Thickness = 1
+    Box.Transparency = 1
+    Box.Filled = false
+
+    function boxesp()
+        game:GetService("RunService").RenderStepped:Connect(function()
+            if v.Character ~= nil and v.Character:FindFirstChild("Humanoid") ~= nil and v.Character:FindFirstChild("HumanoidRootPart") ~= nil and v ~= lplr and v.Character.Humanoid.Health > 0 then
+                local Vector, onScreen = camera:worldToViewportPoint(v.Character.HumanoidRootPart.Position)
+
+                local RootPart = v.Character.HumanoidRootPart
+                local Head = v.Character.Head
+                local RootPosition, RootVis = worldToViewportPoint(CurrentCamera, RootPart.Position)
+                local HeadPosition = worldToViewportPoint(CurrentCamera, Head.Position + HeadOff)
+                local LegPosition = worldToViewportPoint(CurrentCamera, RootPart.Position - LegOff)
+
+                if onScreen then
+                    BoxOutline.Size = Vector2.new(1000 / RootPosition.Z, HeadPosition.Y - LegPosition.Y)
+                    BoxOutline.Position = Vector2.new(RootPosition.X - BoxOutline.Size.X / 2, RootPosition.Y - BoxOutline.Size.Y / 2)
+                    BoxOutline.Visible = true
+
+                    Box.Size = Vector2.new(1000 / RootPosition.Z, HeadPosition.Y - LegPosition.Y)
+                    Box.Position = Vector2.new(RootPosition.X - Box.Size.X / 2, RootPosition.Y - Box.Size.Y / 2)
+                    Box.Visible = true
+
+                    if v.TeamColor == lplr.TeamColor then
+                        BoxOutline.Visible = false
+                        Box.Visible = false
+                    else
+                        BoxOutline.Visible = true
+                        Box.Visible = true
+                    end
+
+                else
+                    BoxOutline.Visible = false
+                    Box.Visible = false
+                end
+            else
+                BoxOutline.Visible = false
+                Box.Visible = false
+            end
+        end)
+    end
+    coroutine.wrap(boxesp)()
+end)
+
+
+    end)
+
+    MainSection:NewToggle("silent aim (head)", "silent aim", function(v)
+        local Players = game:GetService("Players")
+        local LocalPlayer = Players.LocalPlayer
+        local mouse = LocalPlayer:GetMouse()
+        local Camera = workspace.CurrentCamera
+        local Debris = game:GetService("Debris")
+        local UserInputService = game:GetService("UserInputService")
+        local target = false
+        local RunService = game:GetService("RunService")
+        
+        
+        getfenv().lock = "Head" -- Head or Hitbox or Random
+        
+        fov = 250;
+        local fovCircle = true;
+        local st = tonumber(tick());
+        warn("Loading script...")
+        
+        if fovCircle then
+            function createcircle()
+                local a=Drawing.new('Circle');a.Transparency=1;a.Thickness=1.5;a.Visible=true;a.Color=Color3.fromRGB(0,255,149);a.Filled=false;a.Radius=fov;
+                return a;
+            end;  
+            local fovc = createcircle();
+            spawn(function()
+                RunService:BindToRenderStep("FovCircle",1,function()
+                    fovc.Position = Vector2.new(mouse.X,mouse.Y)
+                end);
+            end);
+        end;
+        
+        function isFfa()
+            local am = #Players:GetChildren();
+            local amm = 0;
+            for i , v in pairs(Players:GetChildren()) do
+                if v.Team == LocalPlayer.Team then
+                    amm = amm + 1;
+                end;
+            end;
+            return am == amm;
+        end;
+        function getnearest()
+            local nearestmagnitude = math.huge
+            local nearestenemy = nil
+            local vector = nil
+            local ffa = isFfa();
+            for i,v in next, Players:GetChildren() do
+                if ffa == false and v.Team ~= LocalPlayer.Team or ffa == true then
+                    if v.Character and  v.Character:FindFirstChild("HumanoidRootPart") and v.Character:FindFirstChild("Humanoid") and v.Character.Humanoid.Health > 0 then
+                        local vector, onScreen = Camera:WorldToScreenPoint(v.Character["HumanoidRootPart"].Position)
+                        if onScreen then
+                            local ray = Ray.new(
+                            Camera.CFrame.p,
+                            (v.Character["Head"].Position-Camera.CFrame.p).unit*500
+                            )
+                            local ignore = {
+                            LocalPlayer.Character,
+                            }
+                            local hit,position,normal=workspace:FindPartOnRayWithIgnoreList(ray,ignore)
+                            if hit and hit:FindFirstAncestorOfClass("Model") and Players:FindFirstChild(hit:FindFirstAncestorOfClass("Model").Name)then
+                                local magnitude = (Vector2.new(mouse.X, mouse.Y) - Vector2.new(vector.X, vector.Y)).magnitude
+                                if magnitude < nearestmagnitude and magnitude <= fov then
+                                    nearestenemy = v
+                                    nearestmagnitude = magnitude
+                                end
+                            end
+                        end
+                    end
+                end
+            end
+            return nearestenemy
+        end
+        
+        
+        local meta = getrawmetatable(game)
+        setreadonly(meta, false)
+        local oldNamecall = meta.__namecall
+        meta.__namecall = newcclosure(function(...)
+            
+            local method = getnamecallmethod()
+            local args = {...}
+            if string.find(method,'Ray') then
+                if target then
+                    if args[1].Name ~= "Workspace" then
+                           print(args[1])
+                       end;
+                    args[2] = Ray.new(workspace.CurrentCamera.CFrame.Position, (target.Position + Vector3.new(0,(workspace.CurrentCamera.CFrame.Position-target.Position).Magnitude/500,0) - workspace.CurrentCamera.CFrame.Position).unit * 5000)
+                end
+            end
+            return oldNamecall(unpack(args))
+        end)
+        
+        warn("Script loaded!\nTime taken: "..math.abs(tonumber(tick())-st))
+        RunService:BindToRenderStep("SilentAim",1,function()
+            if UserInputService:IsMouseButtonPressed(0) and Players.LocalPlayer.Character and Players.LocalPlayer.Character:FindFirstChild("Humanoid") and Players.LocalPlayer.Character.Humanoid.Health > 0 then
+                local enemy = getnearest()
+                if enemy and enemy.Character and enemy.Character:FindFirstChild("Humanoid") and enemy.Character.Humanoid.Health > 0 then                
+                    local vector, onScreen = Camera:WorldToScreenPoint(enemy.Character["Head"].Position)
+                    local head = (Vector2.new(mouse.X, mouse.Y) - Vector2.new(vector.X, vector.Y)).magnitude
+                    local vector, onScreen = Camera:WorldToScreenPoint(enemy.Character["HumanoidRootPart"].Position)
+                    local hitbox = (Vector2.new(mouse.X, mouse.Y) - Vector2.new(vector.X, vector.Y)).magnitude
+                    if head <= hitbox then
+                        magnitude = head
+                    else
+                        magnitude = hitbox;
+                    end;
+                    if getfenv().lock == "Head" then
+                        target = workspace[enemy.Name]["Head"]
+                    else
+                        if getfenv().lock == "Random" then
+                            if magnitude == hitbox then
+                                target = workspace[enemy.Name]["HumanoidRootPart"];
+                            else
+                                target = workspace[enemy.Name]["Head"]
+                            end;
+                        else
+                            target = workspace[enemy.Name]["HumanoidRootPart"];
+                        end;
+        
+                    end;
+                else
+                    target = nil
+                end
+            end
+        end)
+        
+    end)
+elseif game.PlaceId == 621129760 then
+    local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+    local Window = Library.CreateLib("kat -  Space Hub", "Midnight")
+
+    -- MAIN
     local Main = Window:NewTab("Main")
     local MainSection = Main:NewSection("Main")
 
-    MainSection:NewDropdown("Wallbang", "Allows you to shoot through walls"), function(v)
-        game.Players.LocalPlayer:GetMouse().KeyDown:Connect(function(Key)
-            if Key == shared.Key then
-                shared.WB = not shared.WB
+    MainSection:NewToggle("Box", "Patched", function(v)
+      
+
+local lplr = game.Players.LocalPlayer
+local camera = game:GetService("Workspace").CurrentCamera
+local CurrentCamera = workspace.CurrentCamera
+local worldToViewportPoint = CurrentCamera.worldToViewportPoint
+
+local HeadOff = Vector3.new(0, 0.5, 0)
+local LegOff = Vector3.new(0,3,0)
+
+for i,v in pairs(game.Players:GetChildren()) do
+    local BoxOutline = Drawing.new("Square")
+    BoxOutline.Visible = false
+    BoxOutline.Color = Color3.new(0,0,0)
+    BoxOutline.Thickness = 3
+    BoxOutline.Transparency = 1
+    BoxOutline.Filled = false
+
+    local Box = Drawing.new("Square")
+    Box.Visible = false
+    Box.Color = Color3.new(1,1,1)
+    Box.Thickness = 1
+    Box.Transparency = 1
+    Box.Filled = false
+
+    function boxesp()
+        game:GetService("RunService").RenderStepped:Connect(function()
+            if v.Character ~= nil and v.Character:FindFirstChild("Humanoid") ~= nil and v.Character:FindFirstChild("HumanoidRootPart") ~= nil and v ~= lplr and v.Character.Humanoid.Health > 0 then
+                local Vector, onScreen = camera:worldToViewportPoint(v.Character.HumanoidRootPart.Position)
+
+                local RootPart = v.Character.HumanoidRootPart
+                local Head = v.Character.Head
+                local RootPosition, RootVis = worldToViewportPoint(CurrentCamera, RootPart.Position)
+                local HeadPosition = worldToViewportPoint(CurrentCamera, Head.Position + HeadOff)
+                local LegPosition = worldToViewportPoint(CurrentCamera, RootPart.Position - LegOff)
+
+                if onScreen then
+                    BoxOutline.Size = Vector2.new(1000 / RootPosition.Z, HeadPosition.Y - LegPosition.Y)
+                    BoxOutline.Position = Vector2.new(RootPosition.X - BoxOutline.Size.X / 2, RootPosition.Y - BoxOutline.Size.Y / 2)
+                    BoxOutline.Visible = true
+
+                    Box.Size = Vector2.new(1000 / RootPosition.Z, HeadPosition.Y - LegPosition.Y)
+                    Box.Position = Vector2.new(RootPosition.X - Box.Size.X / 2, RootPosition.Y - Box.Size.Y / 2)
+                    Box.Visible = true
+
+                    if v.TeamColor == lplr.TeamColor then
+                        BoxOutline.Visible = false
+                        Box.Visible = false
+                    else
+                        BoxOutline.Visible = true
+                        Box.Visible = true
+                    end
+
+                else
+                    BoxOutline.Visible = false
+                    Box.Visible = false
+                end
+            else
+                BoxOutline.Visible = false
+                Box.Visible = false
             end
         end)
-        
-        local mt = getrawmetatable(game)
-        local nc = mt.__namecall
-        
-        setreadonly(mt, false)
-        
-        mt.__namecall = newcclosure(function(self, ...)
-            local Method = getnamecallmethod()
-            local Arguments = {...}
-           
-            if Method == 'FindPartOnRayWithIgnoreList' and shared.WB then
-                table.insert(Arguments[2], game.GetService(game, 'Workspace').Map)
-               
-                return nc(self, unpack(Arguments))
+    end
+    coroutine.wrap(boxesp)()
+end
+
+game.Players.PlayerAdded:Connect(function(v)
+    local BoxOutline = Drawing.new("Square")
+    BoxOutline.Visible = false
+    BoxOutline.Color = Color3.new(0,0,0)
+    BoxOutline.Thickness = 3
+    BoxOutline.Transparency = 1
+    BoxOutline.Filled = false
+
+    local Box = Drawing.new("Square")
+    Box.Visible = false
+    Box.Color = Color3.new(1,1,1)
+    Box.Thickness = 1
+    Box.Transparency = 1
+    Box.Filled = false
+
+    function boxesp()
+        game:GetService("RunService").RenderStepped:Connect(function()
+            if v.Character ~= nil and v.Character:FindFirstChild("Humanoid") ~= nil and v.Character:FindFirstChild("HumanoidRootPart") ~= nil and v ~= lplr and v.Character.Humanoid.Health > 0 then
+                local Vector, onScreen = camera:worldToViewportPoint(v.Character.HumanoidRootPart.Position)
+
+                local RootPart = v.Character.HumanoidRootPart
+                local Head = v.Character.Head
+                local RootPosition, RootVis = worldToViewportPoint(CurrentCamera, RootPart.Position)
+                local HeadPosition = worldToViewportPoint(CurrentCamera, Head.Position + HeadOff)
+                local LegPosition = worldToViewportPoint(CurrentCamera, RootPart.Position - LegOff)
+
+                if onScreen then
+                    BoxOutline.Size = Vector2.new(1000 / RootPosition.Z, HeadPosition.Y - LegPosition.Y)
+                    BoxOutline.Position = Vector2.new(RootPosition.X - BoxOutline.Size.X / 2, RootPosition.Y - BoxOutline.Size.Y / 2)
+                    BoxOutline.Visible = true
+
+                    Box.Size = Vector2.new(1000 / RootPosition.Z, HeadPosition.Y - LegPosition.Y)
+                    Box.Position = Vector2.new(RootPosition.X - Box.Size.X / 2, RootPosition.Y - Box.Size.Y / 2)
+                    Box.Visible = true
+
+                    if v.TeamColor == lplr.TeamColor then
+                        BoxOutline.Visible = false
+                        Box.Visible = false
+                    else
+                        BoxOutline.Visible = true
+                        Box.Visible = true
+                    end
+
+                else
+                    BoxOutline.Visible = false
+                    Box.Visible = false
+                end
+            else
+                BoxOutline.Visible = false
+                Box.Visible = false
             end
-           
-            return nc(self,...)
+        end)
+    end
+    coroutine.wrap(boxesp)()
+end)
+
+
+    end)
+
+    
+    
+    MainSection:NewToggle("Silent Aim", "Silent Aim", function(v)
+        local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local mouse = LocalPlayer:GetMouse()
+local Camera = workspace.CurrentCamera
+local Debris = game:GetService("Debris")
+local UserInputService = game:GetService("UserInputService")
+local target = false
+local RunService = game:GetService("RunService")
+
+
+getfenv().lock = "Head" -- Head or Hitbox or Random
+
+fov = 250;
+local fovCircle = true;
+local st = tonumber(tick());
+
+if fovCircle then
+	function createcircle()
+	    local a=Drawing.new('Circle');a.Transparency=1;a.Thickness=1.5;a.Visible=true;a.Color=Color3.fromRGB(0,255,149);a.Filled=false;a.Radius=fov;
+	    return a;
+	end;  
+	local fovc = createcircle();
+	spawn(function()
+	    RunService:BindToRenderStep("FovCircle",1,function()
+	        fovc.Position = Vector2.new(mouse.X,mouse.Y)
+	    end);
+	end);
+end;
+
+function isFfa()
+	local am = #Players:GetChildren();
+	local amm = 0;
+	for i , v in pairs(Players:GetChildren()) do
+		if v.Team == LocalPlayer.Team then
+			amm = amm + 1;
+		end;
+	end;
+	return am == amm;
+end;
+function getnearest()
+	local nearestmagnitude = math.huge
+	local nearestenemy = nil
+	local vector = nil
+	local ffa = isFfa();
+	for i,v in next, Players:GetChildren() do
+		if ffa == false and v.Team ~= LocalPlayer.Team or ffa == true then
+			if v.Character and  v.Character:FindFirstChild("HumanoidRootPart") and v.Character:FindFirstChild("Humanoid") and v.Character.Humanoid.Health > 0 then
+				local vector, onScreen = Camera:WorldToScreenPoint(v.Character["HumanoidRootPart"].Position)
+				if onScreen then
+					local ray = Ray.new(
+					Camera.CFrame.p,
+					(v.Character["Head"].Position-Camera.CFrame.p).unit*500
+					)
+					local ignore = {
+					LocalPlayer.Character,
+					}
+					local hit,position,normal=workspace:FindPartOnRayWithIgnoreList(ray,ignore)
+					if hit and hit:FindFirstAncestorOfClass("Model") and Players:FindFirstChild(hit:FindFirstAncestorOfClass("Model").Name)then
+						local magnitude = (Vector2.new(mouse.X, mouse.Y) - Vector2.new(vector.X, vector.Y)).magnitude
+						if magnitude < nearestmagnitude and magnitude <= fov then
+							nearestenemy = v
+							nearestmagnitude = magnitude
+						end
+					end
+				end
+			end
+		end
+	end
+	return nearestenemy
+end
+
+
+local meta = getrawmetatable(game)
+setreadonly(meta, false)
+local oldNamecall = meta.__namecall
+meta.__namecall = newcclosure(function(...)
+    
+	local method = getnamecallmethod()
+	local args = {...}
+	if string.find(method,'Ray') then
+		if target then
+		    if args[1].Name ~= "Workspace" then
+   		        print(args[1])
+   		    end;
+			args[2] = Ray.new(workspace.CurrentCamera.CFrame.Position, (target.Position + Vector3.new(0,(workspace.CurrentCamera.CFrame.Position-target.Position).Magnitude/500,0) - workspace.CurrentCamera.CFrame.Position).unit * 5000)
+		end
+	end
+	return oldNamecall(unpack(args))
+end)
+
+warn("Script loaded!\nTime taken: "..math.abs(tonumber(tick())-st))
+RunService:BindToRenderStep("SilentAim",1,function()
+	if UserInputService:IsMouseButtonPressed(0) and Players.LocalPlayer.Character and Players.LocalPlayer.Character:FindFirstChild("Humanoid") and Players.LocalPlayer.Character.Humanoid.Health > 0 then
+		local enemy = getnearest()
+		if enemy and enemy.Character and enemy.Character:FindFirstChild("Humanoid") and enemy.Character.Humanoid.Health > 0 then                
+			local vector, onScreen = Camera:WorldToScreenPoint(enemy.Character["Head"].Position)
+			local head = (Vector2.new(mouse.X, mouse.Y) - Vector2.new(vector.X, vector.Y)).magnitude
+			local vector, onScreen = Camera:WorldToScreenPoint(enemy.Character["HumanoidRootPart"].Position)
+			local hitbox = (Vector2.new(mouse.X, mouse.Y) - Vector2.new(vector.X, vector.Y)).magnitude
+			if head <= hitbox then
+				magnitude = head
+			else
+				magnitude = hitbox;
+			end;
+			if getfenv().lock == "Head" then
+				target = workspace[enemy.Name]["Head"]
+			else
+				if getfenv().lock == "Random" then
+					if magnitude == hitbox then
+						target = workspace[enemy.Name]["HumanoidRootPart"];
+					else
+						target = workspace[enemy.Name]["Head"]
+					end;
+				else
+					target = workspace[enemy.Name]["HumanoidRootPart"];
+				end;
+
+			end;
+		else
+			target = nil
+		end
+	end
+end)
+
+    end)
+
+    
+    
+    MainSection:NewToggle("Tracers", "Working", function(v)
+        local lplr = game.Players.LocalPlayer
+        local camera = game:GetService("Workspace").CurrentCamera
+        local CurrentCamera = workspace.CurrentCamera
+        local worldToViewportPoint = CurrentCamera.worldToViewportPoint
+        
+        _G.TeamCheck = false -- Use True or False to toggle TeamCheck
+        
+        for i,v in pairs(game.Players:GetChildren()) do
+            local Tracer = Drawing.new("Line")
+            Tracer.Visible = false
+            Tracer.Color = Color3.new(1,1,1)
+            Tracer.Thickness = 1
+            Tracer.Transparency = 1
+        
+            function lineesp()
+                game:GetService("RunService").RenderStepped:Connect(function()
+                    if v.Character ~= nil and v.Character:FindFirstChild("Humanoid") ~= nil and v.Character:FindFirstChild("HumanoidRootPart") ~= nil and v ~= lplr and v.Character.Humanoid.Health > 0 then
+                        local Vector, OnScreen = camera:worldToViewportPoint(v.Character.HumanoidRootPart.Position)
+        
+                        if OnScreen then
+                            Tracer.From = Vector2.new(camera.ViewportSize.X / 2, camera.ViewportSize.Y / 1)
+                            Tracer.To = Vector2.new(Vector.X, Vector.Y)
+        
+                            if _G.TeamCheck and v.TeamColor == lplr.TeamColor then
+                                --//Teammates
+                                Tracer.Visible = false
+                            else
+                                --//Enemies
+                                Tracer.Visible = true
+                            end
+                        else
+                            Tracer.Visible = false
+                        end
+                    else
+                        Tracer.Visible = false
+                    end
+                end)
+            end
+            coroutine.wrap(lineesp)()
+        end
+        
+        game.Players.PlayerAdded:Connect(function(v)
+            local Tracer = Drawing.new("Line")
+            Tracer.Visible = false
+            Tracer.Color = Color3.new(1,1,1)
+            Tracer.Thickness = 1
+            Tracer.Transparency = 1
+        
+            function lineesp()
+                game:GetService("RunService").RenderStepped:Connect(function()
+                    if v.Character ~= nil and v.Character:FindFirstChild("Humanoid") ~= nil and v.Character:FindFirstChild("HumanoidRootPart") ~= nil and v ~= lplr and v.Character.Humanoid.Health > 0 then
+                        local Vector, OnScreen = camera:worldToViewportPoint(v.Character.HumanoidRootPart.Position)
+        
+                        if OnScreen then
+                            Tracer.From = Vector2.new(camera.ViewportSize.X / 2, camera.ViewportSize.Y / 1)
+                            Tracer.To = Vector2.new(Vector.X, Vector.Y)
+        
+                            if _G.TeamCheck and v.TeamColor == lplr.TeamColor then
+                                --//Teammates
+                                Tracer.Visible = false
+                            else
+                                --//Enemies
+                                Tracer.Visible = true
+                            end
+                        else
+                            Tracer.Visible = false
+                        end
+                    else
+                        Tracer.Visible = false
+                    end
+                end)
+            end
+            coroutine.wrap(lineesp)()
         end)
     end)
+    MainSection:NewToggle("hit box", "Working +-", function(v)
+        function getnames()
+            for i, v in pairs(game:GetChildren()) do
+                if v.ClassName == "Players" then
+                    return v.Name
+                end
+            end
+        end
+        local players = getnames()
+        local LP = game:GetService("Players").LocalPlayer
+        coroutine.resume(
+            coroutine.create(
+                function()
+                    while wait(1) do
+                        coroutine.resume(
+                            coroutine.create(
+                                function()
+                                    for _, v in pairs(game:GetService("Players"):GetPlayers()) do
+                                        if v.Name ~= LP.Name and v.Character.UpperTorso.Color ~= LP.Character.UpperTorso.Color then
+                                            v.Character.LowerTorso.CanCollide = false
+                                            v.Character.LowerTorso.Material = "Neon"
+                                            v.Character.LowerTorso.Transparency = 1
+                                            v.Character.LowerTorso.Size = Vector3.new(15, 15, 15)
+                                            v.Character.HumanoidRootPart.Size = Vector3.new(15, 15, 15)
+                                        end
+                                    end
+                                end
+                            )
+                        )
+                    end
+                end
+            )
+        )
+    end)
+
+if game.PlaceId == 606849621 then
+        local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+        local Window = Library.CreateLib("Jailbreak -  Space Hub", "Midnight")
+
+local Main = Window:NewTab("Main")
+local MainSection = Main:NewSection("Main")
+
+MainSection:NewToggle("Musuem", "Working", function(v)
+    for i=1,32 do
+		wait(.02)
+		game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1063.02, 117.562, 1218.757) + Vector3.new(1,0,0)
+	end
+end)
+MainSection:NewToggle("Bank", "Working", function(v)
+    for i=1,32 do
+		wait(.01)
+		game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-11.036747, 17.9193821, 797.971521) + Vector3.new(1,0,0)
+	end
+end)
+MainSection:NewToggle("Jewlery", "Working", function(v)
+    for i=1,32 do
+		wait(0.2)
+		game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(133.300705, 17.9375954, 1316.42407) + Vector3.new(1,0,0)
+	end
+end)
+MainSection:NewSlider("Walkspeed", "Working", 250, 16, function(v)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = v
+end)
+MainSection:NewSlider("Jumppower", "Working", 250, 50, function(v)
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = v
+end)
+MainSection:NewButton("Inf Nitro", "Working", function(v)
+    game:GetService('Players').LocalPlayer.PlayerGui.MainGui.Nitro.Name = "Nitr"
+
+	game:GetService('Players').LocalPlayer.PlayerGui.ProductGui.Nitro:Destroy()
+end)
+MainSection:NewButton("Inf Donuts", "Working", function(v)
+    while wait(2) do
+		game.Workspace.TouchTrigger.Donut.Position = game:GetService("Players").LocalPlayer.Character.Head.Position
+	end
+end)
